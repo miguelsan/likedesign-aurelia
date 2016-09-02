@@ -1,0 +1,12 @@
+<template>
+  <div class="search-list">
+    <ul class="list-group">
+      <li repeat.for="search of searchs" class="list-group-item ${search.id === $parent.selectedId ? 'active' : ''}">
+        <a route-href="route: searchs; params.bind: {id:search.id}" click.delegate="$parent.select(search)">
+          <h4 class="list-group-item-heading">${search.id}</h4>
+          <p class="list-group-item-text">${search.email}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</template>
