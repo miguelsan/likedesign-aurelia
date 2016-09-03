@@ -5,46 +5,44 @@ function getId(){
   return ++id;
 }
 
-let searchs = [
+let designs = [
   {
     id:getId(),
     email:'tolkien@inklings.com',
-    phoneNumber:'10115496'
+    url:'10115496'
   },
   {
     id:getId(),
     email:'lewis@inklings.com',
-    phoneNumber:'1'
+    url:'1'
   },
   {
     id:getId(),
     email:'barfield@inklings.com',
-    phoneNumber:'2'
+    url:'2'
   },
   {
     id:getId(),
     email:'williams@inklings.com',
-    phoneNumber:'12075'
+    url:'12075'
   },
   {
     id:getId(),
     email:'green@inklings.com',
-    phoneNumber:'8675309'
+    url:'8675309'
   }
 ];
 
 export class WebAPI {
   isRequesting = false;
 
-  getSearchList(){
+  getDesignList(){
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let results = searchs.map(x =>  { return {
+        let results = designs.map(x =>  { return {
           id:x.id,
-          firstName:x.firstName,
-          lastName:x.lastName,
-          email:x.email
+          url:x.url
         }});
         resolve(results);
         this.isRequesting = false;
@@ -52,30 +50,30 @@ export class WebAPI {
     });
   }
 
-  getSearchs(id){
+  getDesigns(id){
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let found = searchs.filter(x => x.id == id)[0];
+        let found = designs.filter(x => x.id == id)[0];
         resolve(JSON.parse(JSON.stringify(found)));
         this.isRequesting = false;
       }, latency);
     });
   }
 
-  saveSearch(search){
+  saveDesign(design){
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let instance = JSON.parse(JSON.stringify(search));
-        let found = searchs.filter(x => x.id == search.id)[0];
+        let instance = JSON.parse(JSON.stringify(design));
+        let found = designs.filter(x => x.id == design.id)[0];
 
         if(found){
-          let index = searchs.indexOf(found);
-          searchs[index] = instance;
+          let index = designs.indexOf(found);
+          designs[index] = instance;
         }else{
           instance.id = getId();
-          searchs.push(instance);
+          designs.push(instance);
         }
 
         this.isRequesting = false;

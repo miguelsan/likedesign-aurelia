@@ -1,29 +1,33 @@
-
-import {EventAggregator} from 'aurelia-event-aggregator';
-import {WebAPI} from './web-api';
-import {SearchUpdated, SearchViewed} from './messages';
+// import {EventAggregator} from 'aurelia-event-aggregator';
+// import {DesignsVoted, DesignsViewed} from './messages';
 import {inject} from 'aurelia-framework';
+import {Search} from './search';
+import {Router} from 'aurelia-router';
 
-@inject(WebAPI, EventAggregator)
+// @inject(EventAggregator)
+@inject(Router)
+
 export class SearchList {
-  searchs;
-  selectedId = 0;
+  heading = "Searches";
+  searchQuery = '';
+  searches = [];
+  // selectedId = 0;
 
-  constructor(private api: WebAPI, ea: EventAggregator){
-    ea.subscribe(SearchViewed, msg => this.select(msg.search));
-    ea.subscribe(SearchUpdated, msg => {
-      let id = msg.search.id;
-      let found = this.searchs.find(x => x.id == id);
-      Object.assign(found, msg.search);
-    });
+  constructor(router){
+    this.router = router;
   }
 
-  created(){
-    this.api.getSearchList().then(searchs => this.searchs = searchs);
+  addSearch() {
+    var query = this.searchQuery
+    if (query) {
+      this.searches.push(new Search(query));
+      this.searchQuery = '';
+      this.router.navigate('designs/'+query);
+    }
   }
 
-  select(search){
-    this.selectedId = search.id;
-    return true;
-  }
+  // select(design){
+  //   this.selectedId = design.id;
+  //   return true;
+  // }
 }

@@ -6,8 +6,9 @@ export class App {
   configureRouter(config: RouterConfiguration, router: Router){
     config.title = 'LikeDesign';
     config.map([
-      { route: '',            moduleId: 'no-search',     title: 'search' },
-      { route: 'searchs/:id', moduleId: 'search',        name:  'searchs' }
+      { route: '',               moduleId: 'no-search',     title: 'search' },
+      { route: 'designs/:query', moduleId: 'design-list',   name:  'designs' },
+      { route: 'results',        moduleId: 'results',       title: 'results' }
     ]);
 
     this.router = router;
