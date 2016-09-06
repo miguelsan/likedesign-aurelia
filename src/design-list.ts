@@ -26,8 +26,7 @@ export class DesignList {
     .get('?query=' + query)
     // Due to Aurelia's bug: https://github.com/aurelia/http-client/issues/129,
     // we can't do the following:
-    // .then(response => { this.designs = xmlParser(response.content); })
-    .then(response => { xmlParser(response.content); })
+    .then(response => { this.designs = xmlParser(response); })
   }
 
   select(design){

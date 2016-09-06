@@ -8,6 +8,10 @@ export class Search {
     this.searchQuery = searchQuery;
   }
 
+  // created(){
+  //   this.api.getContactList().then(contacts => this.contacts = contacts);
+  // }
+  // 
   // select(contact){
   //   this.selectedId = contact.id;
   //   return true;

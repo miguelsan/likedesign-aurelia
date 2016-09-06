@@ -17,136 +17,40 @@ define('app',["require", "exports"], function (require, exports) {
     exports.App = App;
 });
 
-define('web-api',["require", "exports"], function (require, exports) {
-    "use strict";
-    var latency = 200;
-    var id = 0;
-    function getId() {
-        return ++id;
-    }
-    var designs = [
-        {
-            id: getId(),
-            email: 'tolkien@inklings.com',
-            url: '10115496'
-        },
-        {
-            id: getId(),
-            email: 'lewis@inklings.com',
-            url: '1'
-        },
-        {
-            id: getId(),
-            email: 'barfield@inklings.com',
-            url: '2'
-        },
-        {
-            id: getId(),
-            email: 'williams@inklings.com',
-            url: '12075'
-        },
-        {
-            id: getId(),
-            email: 'green@inklings.com',
-            url: '8675309'
-        }
-    ];
-    var WebAPI = (function () {
-        function WebAPI() {
-            this.isRequesting = false;
-        }
-        WebAPI.prototype.getDesignList = function () {
-            var _this = this;
-            this.isRequesting = true;
-            return new Promise(function (resolve) {
-                setTimeout(function () {
-                    var results = designs.map(function (x) {
-                        return {
-                            id: x.id,
-                            url: x.url
-                        };
-                    });
-                    resolve(results);
-                    _this.isRequesting = false;
-                }, latency);
-            });
-        };
-        WebAPI.prototype.getDesigns = function (id) {
-            var _this = this;
-            this.isRequesting = true;
-            return new Promise(function (resolve) {
-                setTimeout(function () {
-                    var found = designs.filter(function (x) { return x.id == id; })[0];
-                    resolve(JSON.parse(JSON.stringify(found)));
-                    _this.isRequesting = false;
-                }, latency);
-            });
-        };
-        WebAPI.prototype.saveDesign = function (design) {
-            var _this = this;
-            this.isRequesting = true;
-            return new Promise(function (resolve) {
-                setTimeout(function () {
-                    var instance = JSON.parse(JSON.stringify(design));
-                    var found = designs.filter(function (x) { return x.id == design.id; })[0];
-                    if (found) {
-                        var index = designs.indexOf(found);
-                        designs[index] = instance;
-                    }
-                    else {
-                        instance.id = getId();
-                        designs.push(instance);
-                    }
-                    _this.isRequesting = false;
-                    resolve(instance);
-                }, latency);
-            });
-        };
-        return WebAPI;
-    }());
-    exports.WebAPI = WebAPI;
-});
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('design-list',["require", "exports", './web-api', 'aurelia-framework'], function (require, exports, web_api_1, aurelia_framework_1) {
+define('design-list',["require", "exports", 'aurelia-http-client'], function (require, exports, aurelia_http_client_1) {
     "use strict";
     var DesignList = (function () {
-        function DesignList(api) {
-            this.api = api;
+        function DesignList() {
+            this.designs = [];
             this.selectedId = 0;
         }
-        DesignList.prototype.created = function () {
+        DesignList.prototype.activate = function (params, routeConfig) {
+            this.routeConfig = routeConfig;
+            this.fetchSearch(params.query, this.parseDesigns);
+        };
+        DesignList.prototype.parseDesigns = function (xmlString) {
+            var parsed = new DOMParser()
+                .parseFromString(xmlString, "application/xml");
+            return $(parsed).find('design resource');
+        };
+        DesignList.prototype.fetchSearch = function (query, xmlParser) {
             var _this = this;
-            this.api.getDesignList().then(function (designs) { return _this.designs = designs; });
+            new aurelia_http_client_1.HttpClient()
+                .configure(function (config) {
+                config
+                    .withResponseType('xml')
+                    .withBaseUrl('https://api.spreadshirt.net/api/v1/shops/205909/designs');
+            })
+                .get('?query=' + query)
+                .then(function (response) { _this.designs = xmlParser(response); });
         };
         DesignList.prototype.select = function (design) {
             this.selectedId = design.id;
             return true;
         };
-        DesignList = __decorate([
-            aurelia_framework_1.inject(web_api_1.WebAPI), 
-            __metadata('design:paramtypes', [web_api_1.WebAPI])
-        ], DesignList);
         return DesignList;
     }());
     exports.DesignList = DesignList;
-});
-
-define('utility',["require", "exports"], function (require, exports) {
-    "use strict";
-    function areEqual(obj1, obj2) {
-        return Object.keys(obj1).every(function (key) { return obj2.hasOwnProperty(key) && (obj1[key] === obj2[key]); });
-    }
-    exports.areEqual = areEqual;
-    ;
 });
 
 define('design',["require", "exports"], function (require, exports) {
@@ -264,6 +168,15 @@ define('search-list',["require", "exports", 'aurelia-framework', './search', 'au
         return SearchList;
     }());
     exports.SearchList = SearchList;
+});
+
+define('utility',["require", "exports"], function (require, exports) {
+    "use strict";
+    function areEqual(obj1, obj2) {
+        return Object.keys(obj1).every(function (key) { return obj2.hasOwnProperty(key) && (obj1[key] === obj2[key]); });
+    }
+    exports.areEqual = areEqual;
+    ;
 });
 
 define('resources/index',["require", "exports"], function (require, exports) {
