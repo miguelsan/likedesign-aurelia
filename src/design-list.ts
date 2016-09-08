@@ -23,10 +23,11 @@ export class DesignList {
       .withResponseType('xml')
       .withBaseUrl('https://api.spreadshirt.net/api/v1/shops/205909/designs')
     })
+      // there is also the possibility to fetch the payload as json, &mediaType=json,
+      // see https://developer.spreadshirt.net/display/API/Client-Server+Communication
     .get('?query=' + query)
-    // Due to Aurelia's bug: https://github.com/aurelia/http-client/issues/129,
-    // we can't do the following:
-    .then(response => { this.designs = xmlParser(response); })
+    // you are passing the HttpResponseMessage to the xmlParser and not the xmlString like the parameter is named
+    .then(response => { this.designs = xmlParser(response.content); })
   }
 
   select(design){
