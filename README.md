@@ -5,7 +5,7 @@ To run this [Aurelia](https://aurelia.io/) app locally do:
 
 ```
   npm install
-  npm install aurelia-http-client
+  npm install aurelia-fetch-client
   au run --watch
 ```
 
