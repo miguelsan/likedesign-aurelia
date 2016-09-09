@@ -1,4 +1,4 @@
-import {HttpClient} from 'aurelia-http-client';
+import {HttpClient} from 'aurelia-fetch-client';
 
 export class DesignList {
   routeConfig;
@@ -16,8 +16,9 @@ export class DesignList {
       config
       .withBaseUrl('https://api.spreadshirt.net/api/v1/shops/205909/designs')
     })
-    .get('?query=' + query + '&mediaType=json')
-    .then(response => { this.designs = response.content; })
+    .fetch('?query=' + query + '&mediaType=json')
+    .then(response => response.json())
+    .then(data => { this.designs = data.designs })
   }
 
   select(design){

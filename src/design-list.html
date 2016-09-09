@@ -2,9 +2,9 @@
   <div class="design-list">
     <ul class="list-group">
       <li repeat.for="design of designs" class="list-group-item">
-        <h4 class="list-group-item-heading">${design.id}: ${design.url}</h4>
+        <h4 class="list-group-item-heading">${design.id}: ${design.name}</h4>
         <p class="list-group-item-text">
-          <img src="https://image.spreadshirtmedia.net/image-server/v1/designs/${design.url}" />
+          <img src.bind="design.href" />
         </p>
       </li>
     </ul>
