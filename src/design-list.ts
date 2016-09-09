@@ -10,23 +10,14 @@ export class DesignList {
     this.fetchSearch(params.query, this.parseDesigns);
   }
 
-  private parseDesigns(xmlString) {
-    var parsed = new DOMParser()
-      .parseFromString(xmlString, "application/xml");
-    return $(parsed).find('design resource');
-  }
-
   private fetchSearch(query, xmlParser) {
     new HttpClient()
     .configure(config => {
       config
-      .withResponseType('xml')
       .withBaseUrl('https://api.spreadshirt.net/api/v1/shops/205909/designs')
     })
-    .get('?query=' + query)
-    // Due to Aurelia's bug: https://github.com/aurelia/http-client/issues/129,
-    // we can't do the following:
-    .then(response => { this.designs = xmlParser(response); })
+    .get('?query=' + query + '&mediaType=json')
+    .then(response => { this.designs = response.content; })
   }
 
   select(design){
