@@ -1,5 +1,6 @@
 import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
+import {Design} from './design';
 
 @autoinject
 export class DesignList {
@@ -21,7 +22,11 @@ export class DesignList {
     })
     .fetch('?query=' + query + '&mediaType=json')
     .then(response => response.json())
-    .then(data => { this.designs = data.designs })
+    .then(data => {
+      for (let design of data.designs) {
+        this.designs.push(new Design(design))
+      }
+    })
   }
 
   select(design){
