@@ -1,11 +1,10 @@
 <template>
+  <require from="./design-item.html"></require>
+
   <div class="design-list">
     <ul class="list-group">
       <li repeat.for="design of designs" class="list-group-item">
-        <h4 class="list-group-item-heading">${design.id}: ${design.name}</h4>
-        <p class="list-group-item-text">
-          <img src.bind="design.href" />
-        </p>
+        <design-item id=${design.id} name=${design.name} href=${design.resources[0].href}></design-item>
       </li>
     </ul>
   </div>
