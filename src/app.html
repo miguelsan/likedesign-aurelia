@@ -1,7 +1,6 @@
 <template>
   <require from="bootstrap/css/bootstrap.css"></require>
   <require from="./styles.css"></require>
-  <require from="./search-list"></require>
 
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
@@ -14,8 +13,7 @@
 
   <div class="container">
     <div class="row">
-      <search-list class="col-md-4"></search-list>
-      <router-view class="col-md-8"></router-view>
+      <router-view></router-view>
     </div>
   </div>
 </template>

@@ -1,4 +1,7 @@
 <template>
+  <require from='./design-list'></require>
+
+  <div class="col-md-4">
     <div class="search-list">
       <form submit.trigger="addSearch()">
         <input type="text" value.bind="searchQuery">
@@ -11,4 +14,7 @@
         </li>
       </ul>
     </div>
+  </div>
+
+  <design-list designs.bind="currentDesignsList" class="col-md-8"></design-list>
 </template>

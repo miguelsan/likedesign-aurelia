@@ -11,6 +11,7 @@ export class SearchList {
   heading = "Searches";
   searchQuery = '';
   searches = [];
+  currentDesignsList = [];
   // selectedId = 0;
 
   constructor(router){
@@ -20,7 +21,10 @@ export class SearchList {
   addSearch() {
     var query = this.searchQuery
     if (query) {
-      this.searches.push(new Search(query));
+      var currentSearch = new Search(query);
+      this.searches.push(currentSearch);
+
+      this.currentDesignsList = currentSearch.designs;
       this.searchQuery = '';
       this.router.navigate('designs/'+query);
     }
