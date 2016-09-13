@@ -8,7 +8,7 @@ export class App {
     config.map([
       { route: '',               moduleId: 'no-search',                     title: 'Home' },
       { route: 'results',        moduleId: 'results',     name: 'results',  title: 'Finish' },
-      { route: 'designs/:query', moduleId: 'design-list', name: 'designs',  title: 'Search' },
+      { route: 'designs/:query', moduleId: 'search-list', name: 'designs',  title: 'Search' },
     ]);
 
     this.router = router;
