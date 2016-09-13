@@ -1,3 +1,5 @@
+// Temporarily fix https://github.com/aurelia/fetch-client/issues/65 with:
+/// <reference path="../node_modules/aurelia-fetch-client/doc/whatwg-fetch.d.ts" />
 import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Design} from './design';
