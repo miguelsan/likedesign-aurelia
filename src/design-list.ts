@@ -14,6 +14,7 @@ export class DesignList {
 
   activate(params, routeConfig){
     this.routeConfig = routeConfig;
+    this.routeConfig.navModel.setTitle('Search: ' + params.query);
     this.fetchSearch(params.query, this.parseDesigns);
   }
 
