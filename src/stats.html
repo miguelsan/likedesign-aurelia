@@ -1,11 +1,12 @@
 <template>
+  <div class="col-md-3"></div>
   <div class="col-md-6">
-    <h3>
-      Thank you!
-    </h3>
-    <p class="list-group-item-text">Total of voted designs: ${totalVotes}</p>
+    <div class="panel panel-default">
+      <div class="panel-heading">Thank you!</div>
+      <div class="panel-body">
+        <p>Total of voted designs: ${totalVotes}</p>
+      </div>
 
-    <div class="table-responsive">
       <table class="table table-striped top10">
         <tr>
           <td></td>
@@ -20,5 +21,10 @@
         </tr>
       </table>
     </div>
+
+    <div class="text-center">
+      <a route-href="route: home" class="btn btn-primary">Start over</a>
+    </div>
   </div>
+  <div class="col-md-3"></div>
 </template>

@@ -39,6 +39,10 @@ a:focus {
   margin: 20px;
 }
 
+ul.list-group {
+  margin-bottom: 0px;
+}
+
 li.list-group-item {
   list-style: none;
 }
