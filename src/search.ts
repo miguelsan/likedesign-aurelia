@@ -1,5 +1,3 @@
-import {EventAggregator} from 'aurelia-event-aggregator';
-// import {DesignVoted,SearchViewed} from './messages';
 // Temporarily fix https://github.com/aurelia/fetch-client/issues/65 with:
 /// <reference path="../node_modules/aurelia-fetch-client/doc/whatwg-fetch.d.ts" />
 import {HttpClient} from 'aurelia-fetch-client';
@@ -7,20 +5,12 @@ import {Design} from './design';
 
 export class Search {
   designs = [];
+  likedDesigns = [];
 
   constructor(searchQuery: String){
     this.searchQuery = searchQuery;
     this.fetchSearch();
   }
-
-  // created(){
-  //   this.api.getContactList().then(contacts => this.contacts = contacts);
-  // }
-  // 
-  // select(contact){
-  //   this.selectedId = contact.id;
-  //   return true;
-  // }
 
   private fetchSearch() {
     new HttpClient()
