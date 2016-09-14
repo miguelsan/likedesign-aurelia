@@ -1,5 +1,5 @@
 <template>
-  <require from='./design-list'></require>
+  <require from="./design-item.html"></require>
 
   <div class="col-md-4">
     <div class="search-list">
@@ -11,10 +11,21 @@
         <li repeat.for="search of searches" class="list-group-item">
           <h4 class="list-group-item-heading">${search.searchQuery}</h4>
           <p class="list-group-item-text">${search.designs.length} designs</p>
+          <p class="list-group-item-text">${search.likedDesigns.length} liked</p>
         </li>
       </ul>
     </div>
   </div>
 
-  <design-list designs.bind="currentDesignsList" class="col-md-8"></design-list>
+  <div class="design-list col-md-8">
+    <ul class="list-group">
+      <li repeat.for="design of currentSearch.designs" class="list-group-item">
+        <h4 class="list-group-item-heading">${design.id}: ${design.name}</h4>
+        <p class="list-group-item-text">
+          <img src.bind="design.href" />
+          <label>Like it <input type="checkbox" model.bind="design" checked.bind="currentSearch.likedDesigns" /></label>
+        </p>
+      </li>
+    </ul>
+  </div>
 </template>
