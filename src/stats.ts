@@ -8,7 +8,7 @@ export class Stats {
 
   constructor(store){
     this.store = store;
-    this.searches = this.store.doneSearches;
+    this.searches = this.store.rows;
     this.totalVotes = this.searches.map(this.voted).reduce(this.addUp, 0);
   }
 
