@@ -12,7 +12,7 @@ export class Stats {
   }
 
   private voted(search) {
-    return (search.likedDesigns.length);
+    return (search.likedDesigns.length + search.dislikedDesigns.length);
   }
 
   private addUp (previousValue, currentValue) {
