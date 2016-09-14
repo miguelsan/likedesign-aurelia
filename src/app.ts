@@ -7,7 +7,7 @@ export class App {
     config.title = 'LikeDesign';
     config.map([
       { route: '',               moduleId: 'no-search',                     title: 'Home' },
-      { route: 'results',        moduleId: 'results',     name: 'results',  title: 'Finish' },
+      { route: 'results',        moduleId: 'stats',       name: 'results',  title: 'Finish' },
       { route: 'designs/:query', moduleId: 'search-list', name: 'designs',  title: 'Search' },
     ]);
 

@@ -1,0 +1,12 @@
+<template>
+  <h3>
+    Finish
+  </h3>
+  <ul class="list-group top10">
+    <li repeat.for="search of searches" class="list-group-item">
+      <h4 class="list-group-item-heading">${search.searchQuery}</h4>
+      <p class="list-group-item-text">${search.likedDesigns.length} liked</p>
+    </li>
+  </ul>
+
+</template>
