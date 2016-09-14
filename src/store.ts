@@ -3,11 +3,11 @@ export class Store {
     this.reset();
   }
 
-  addSearch(search) {
-    this.doneSearches.push(search);
+  addRow(row) {
+    this.rows.push(row);
   }
 
   reset() {
-    this.doneSearches = [];
+    this.rows = [];
   }
 }

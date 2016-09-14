@@ -14,6 +14,7 @@ export class SearchList {
   constructor(router, store){
     this.router = router;
     this.store = store;
+    this.searches = this.store.rows;
     this.currentSearch = undefined;
   }
 
@@ -21,7 +22,7 @@ export class SearchList {
     var currentQuery = this.searchQuery;
     if (currentQuery) {
       this.currentSearch = new Search(currentQuery);
-      this.store.addSearch(this.currentSearch);
+      this.store.addRow(this.currentSearch);
 
       this.searchQuery = '';
       this.router.navigate('designs/'+currentQuery);
