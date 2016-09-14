@@ -1,23 +1,27 @@
 import {inject} from 'aurelia-framework';
 import {Search} from './search';
 import {Router} from 'aurelia-router';
+import {Store} from './store';
 
-@inject(Router)
+@inject(Router, Store)
 
 export class SearchList {
+  router: Router;
+  store: Store;
   searchQuery = '';
   searches = [];
-  currentSearch = undefined;
 
-  constructor(router){
+  constructor(router, store){
     this.router = router;
+    this.store = store;
+    this.currentSearch = undefined;
   }
 
   addSearch() {
-    var currentQuery = this.searchQuery
+    var currentQuery = this.searchQuery;
     if (currentQuery) {
       this.currentSearch = new Search(currentQuery);
-      this.searches.push(this.currentSearch);
+      this.store.addSearch(this.currentSearch);
 
       this.searchQuery = '';
       this.router.navigate('designs/'+currentQuery);

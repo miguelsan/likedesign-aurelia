@@ -8,13 +8,13 @@
         <button type="submit">Search</button>
       </form>
       <ul class="list-group top10">
-        <li repeat.for="search of searches" class="list-group-item">
+        <li repeat.for="search of store.doneSearches" class="list-group-item">
           <h4 class="list-group-item-heading">${search.searchQuery}</h4>
           <p class="list-group-item-text">${search.designs.length} designs</p>
-          <p class="list-group-item-text">${search.likedDesigns.length} liked</p>
         </li>
       </ul>
     </div>
+    <a route-href="route: results">Finish</a>
   </div>
 
   <div class="design-list col-md-8">
