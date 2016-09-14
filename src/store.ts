@@ -1,9 +1,13 @@
 export class Store {
   constructor(){
-    this.doneSearches = [];
+    this.reset();
   }
 
   addSearch(search) {
     this.doneSearches.push(search);
+  }
+
+  reset() {
+    this.doneSearches = [];
   }
 }

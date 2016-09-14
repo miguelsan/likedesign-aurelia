@@ -7,8 +7,13 @@ export class Stats {
   store: Store;
 
   constructor(store){
-    this.searches = store.doneSearches;
+    this.store = store;
+    this.searches = this.store.doneSearches;
     this.totalVotes = this.searches.map(this.voted).reduce(this.addUp, 0);
+  }
+
+  deactivate() {
+    this.store.reset();
   }
 
   private voted(search) {
@@ -18,6 +23,4 @@ export class Stats {
   private addUp (previousValue, currentValue) {
     return previousValue + currentValue;
   }
-
-  //TODO: destroy store values on leave
 }
