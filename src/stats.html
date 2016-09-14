@@ -10,10 +10,12 @@
         <tr>
           <td></td>
           <th>Liked</th>
+          <th>Disliked</th>
         </tr>
         <tr repeat.for="search of searches">
           <th>${search.searchQuery}</th>
           <td>${search.likedDesigns.length}</td>
+          <td>${search.dislikedDesigns.length}</td>
         </li>
         </tr>
       </table>

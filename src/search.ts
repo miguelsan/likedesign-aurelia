@@ -6,6 +6,7 @@ import {Design} from './design';
 export class Search {
   designs = [];
   likedDesigns = [];
+  dislikedDesigns = [];
 
   constructor(searchQuery: String){
     this.searchQuery = searchQuery;
