@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {Store} from './store';
+import {Store} from '../models/store';
 
 @inject(Store)
 

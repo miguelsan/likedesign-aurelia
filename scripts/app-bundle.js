@@ -6,28 +6,15 @@ define('app',["require", "exports"], function (require, exports) {
         App.prototype.configureRouter = function (config, router) {
             config.title = 'LikeDesign';
             config.map([
-                { route: '', moduleId: 'home', name: 'home', title: 'Home' },
-                { route: 'designs', moduleId: 'search-list', name: 'designs', title: 'Search' },
-                { route: 'results', moduleId: 'stats', name: 'results', title: 'Finish' },
+                { route: '', moduleId: 'components/home', name: 'home', title: 'Home' },
+                { route: 'designs', moduleId: 'components/search-list', name: 'designs', title: 'Search' },
+                { route: 'results', moduleId: 'components/stats', name: 'results', title: 'Finish' },
             ]);
             this.router = router;
         };
         return App;
     }());
     exports.App = App;
-});
-
-define('design',["require", "exports"], function (require, exports) {
-    "use strict";
-    var Design = (function () {
-        function Design(data) {
-            this.id = data.id;
-            this.name = data.name;
-            this.href = data.resources[0].href;
-        }
-        return Design;
-    }());
-    exports.Design = Design;
 });
 
 define('environment',["require", "exports"], function (require, exports) {
@@ -37,19 +24,6 @@ define('environment',["require", "exports"], function (require, exports) {
         debug: true,
         testing: true
     };
-});
-
-define('home',["require", "exports"], function (require, exports) {
-    "use strict";
-    var home = (function () {
-        function home() {
-            this.message = "Here you can like (or dislike) some designs.<br/>"
-                + "Search after a keyword and vote for them.<br/>"
-                + "Don't forget to check your result when you are finished!";
-        }
-        return home;
-    }());
-    exports.home = home;
 });
 
 define('main',["require", "exports", './environment'], function (require, exports, environment_1) {
@@ -74,18 +48,59 @@ define('main',["require", "exports", './environment'], function (require, export
     exports.configure = configure;
 });
 
-define('no-search',["require", "exports"], function (require, exports) {
+define('components/home',["require", "exports"], function (require, exports) {
     "use strict";
-    var NoSearch = (function () {
-        function NoSearch() {
-            this.message = "Please enter a search query.";
+    var home = (function () {
+        function home() {
+            this.message = "Here you can like (or dislike) some designs.<br/>"
+                + "Search after a keyword and vote for them.<br/>"
+                + "Don't forget to check your result when you are finished!";
         }
-        return NoSearch;
+        return home;
     }());
-    exports.NoSearch = NoSearch;
+    exports.home = home;
 });
 
-define('search',["require", "exports", 'aurelia-fetch-client', './design'], function (require, exports, aurelia_fetch_client_1, design_1) {
+define('models/store',["require", "exports"], function (require, exports) {
+    "use strict";
+    var Store = (function () {
+        function Store() {
+            this.reset();
+        }
+        Store.prototype.addRow = function (row) {
+            this.rows.push(row);
+        };
+        Store.prototype.dropRow = function (row) {
+            var index = this.rows.indexOf(row);
+            this.rows.splice(index, 1);
+            this.rows.push(row);
+        };
+        Store.prototype.find = function (criteria) {
+            var found = this.rows.filter(criteria);
+            return found;
+        };
+        Store.prototype.reset = function () {
+            this.rows = [];
+        };
+        return Store;
+    }());
+    exports.Store = Store;
+});
+
+define('models/design',["require", "exports"], function (require, exports) {
+    "use strict";
+    var Design = (function () {
+        function Design(data) {
+            this.id = data.id;
+            this.name = data.name;
+            this.href = data.resources[0].href;
+        }
+        return Design;
+    }());
+    exports.Design = Design;
+});
+
+define('models/search',["require", "exports", 'aurelia-fetch-client', './design'], function (require, exports, aurelia_fetch_client_1, design_1) {
     "use strict";
     var Search = (function () {
         function Search(searchQuery) {
@@ -116,32 +131,6 @@ define('search',["require", "exports", 'aurelia-fetch-client', './design'], func
     exports.Search = Search;
 });
 
-define('store',["require", "exports"], function (require, exports) {
-    "use strict";
-    var Store = (function () {
-        function Store() {
-            this.reset();
-        }
-        Store.prototype.addRow = function (row) {
-            this.rows.push(row);
-        };
-        Store.prototype.dropRow = function (row) {
-            var index = this.rows.indexOf(row);
-            this.rows.splice(index, 1);
-            this.rows.push(row);
-        };
-        Store.prototype.find = function (criteria) {
-            var found = this.rows.filter(criteria);
-            return found;
-        };
-        Store.prototype.reset = function () {
-            this.rows = [];
-        };
-        return Store;
-    }());
-    exports.Store = Store;
-});
-
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -151,7 +140,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('search-list',["require", "exports", 'aurelia-framework', './search', 'aurelia-router', './store'], function (require, exports, aurelia_framework_1, search_1, aurelia_router_1, store_1) {
+define('components/search-list',["require", "exports", 'aurelia-framework', 'aurelia-router', '../models/store', '../models/search'], function (require, exports, aurelia_framework_1, aurelia_router_1, store_1, search_1) {
     "use strict";
     var SearchList = (function () {
         function SearchList(router, store) {
@@ -202,7 +191,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('stats',["require", "exports", 'aurelia-framework', './store'], function (require, exports, aurelia_framework_1, store_1) {
+define('components/stats',["require", "exports", 'aurelia-framework', '../models/store'], function (require, exports, aurelia_framework_1, store_1) {
     "use strict";
     var Stats = (function () {
         function Stats(store) {
