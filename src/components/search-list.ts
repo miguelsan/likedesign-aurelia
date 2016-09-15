@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework';
-import {Search} from './search';
 import {Router} from 'aurelia-router';
-import {Store} from './store';
+import {Store} from '../models/store';
+import {Search} from '../models/search';
 
 @inject(Router, Store)
 
