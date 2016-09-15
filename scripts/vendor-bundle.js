@@ -3791,7 +3791,7 @@ K(require)||(w=require,require=void 0);g=requirejs=function(b,c,d,m){var r,q="_"
 0),importScripts(d),b.completeLoad(c)}catch(q){b.onError(F("importscripts","importScripts failed for "+c+" at "+d,q,[c]))}};E&&!w.skipDataMain&&X(document.getElementsByTagName("script"),function(b){C||(C=b.parentNode);if(O=b.getAttribute("data-main"))return u=O,w.baseUrl||-1!==u.indexOf("!")||(I=u.split("/"),u=I.pop(),T=I.length?I.join("/")+"/":"./",w.baseUrl=T),u=u.replace(U,""),g.jsExtRegExp.test(u)&&(u=O),w.deps=w.deps?w.deps.concat(u):[u],!0});define=function(b,c,d){var e,g;"string"!==typeof b&&
 (d=c,c=b,b=null);L(c)||(d=c,c=null);!c&&K(d)&&(c=[],d.length&&(d.toString().replace(qa,ka).replace(ra,function(b,d){c.push(d)}),c=(1===d.length?["require"]:["require","exports","module"]).concat(c)));S&&(e=P||pa())&&(b||(b=e.getAttribute("data-requiremodule")),g=J[e.getAttribute("data-requirecontext")]);g?(g.defQueue.push([b,c,d]),g.defQueueMap[b]=!0):V.push([b,c,d])};define.amd={jQuery:!0};g.exec=function(b){return eval(b)};g(w)}})(this);
 
-requirejs.config({"baseUrl":"src/","paths":{"text":"../scripts/text","aurelia-binding":"../node_modules/aurelia-binding/dist/amd/aurelia-binding","aurelia-bootstrapper":"../node_modules/aurelia-bootstrapper/dist/amd/aurelia-bootstrapper","aurelia-dependency-injection":"../node_modules/aurelia-dependency-injection/dist/amd/aurelia-dependency-injection","aurelia-event-aggregator":"../node_modules/aurelia-event-aggregator/dist/amd/aurelia-event-aggregator","aurelia-fetch-client":"../node_modules/aurelia-fetch-client/dist/amd/aurelia-fetch-client","aurelia-framework":"../node_modules/aurelia-framework/dist/amd/aurelia-framework","aurelia-history":"../node_modules/aurelia-history/dist/amd/aurelia-history","aurelia-loader":"../node_modules/aurelia-loader/dist/amd/aurelia-loader","aurelia-history-browser":"../node_modules/aurelia-history-browser/dist/amd/aurelia-history-browser","aurelia-loader-default":"../node_modules/aurelia-loader-default/dist/amd/aurelia-loader-default","aurelia-logging":"../node_modules/aurelia-logging/dist/amd/aurelia-logging","aurelia-metadata":"../node_modules/aurelia-metadata/dist/amd/aurelia-metadata","aurelia-logging-console":"../node_modules/aurelia-logging-console/dist/amd/aurelia-logging-console","aurelia-pal":"../node_modules/aurelia-pal/dist/amd/aurelia-pal","aurelia-pal-browser":"../node_modules/aurelia-pal-browser/dist/amd/aurelia-pal-browser","aurelia-polyfills":"../node_modules/aurelia-polyfills/dist/amd/aurelia-polyfills","aurelia-path":"../node_modules/aurelia-path/dist/amd/aurelia-path","aurelia-route-recognizer":"../node_modules/aurelia-route-recognizer/dist/amd/aurelia-route-recognizer","aurelia-router":"../node_modules/aurelia-router/dist/amd/aurelia-router","aurelia-task-queue":"../node_modules/aurelia-task-queue/dist/amd/aurelia-task-queue","aurelia-templating":"../node_modules/aurelia-templating/dist/amd/aurelia-templating","aurelia-templating-binding":"../node_modules/aurelia-templating-binding/dist/amd/aurelia-templating-binding","jquery":"../node_modules/jquery/dist/jquery","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"bootstrap","location":"../node_modules/bootstrap/dist","main":"js/bootstrap.min"},{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"}],"stubModules":["text"],"shim":{"bootstrap":{"deps":["jquery"],"exports":"$"}},"bundles":{"app-bundle":["app","design","environment","main","messages","no-search","results","search","search-list","utility","resources/index","styles","design-item"]}});
+requirejs.config({"baseUrl":"src/","paths":{"text":"../scripts/text","aurelia-binding":"../node_modules/aurelia-binding/dist/amd/aurelia-binding","aurelia-dependency-injection":"../node_modules/aurelia-dependency-injection/dist/amd/aurelia-dependency-injection","aurelia-bootstrapper":"../node_modules/aurelia-bootstrapper/dist/amd/aurelia-bootstrapper","aurelia-event-aggregator":"../node_modules/aurelia-event-aggregator/dist/amd/aurelia-event-aggregator","aurelia-fetch-client":"../node_modules/aurelia-fetch-client/dist/amd/aurelia-fetch-client","aurelia-framework":"../node_modules/aurelia-framework/dist/amd/aurelia-framework","aurelia-history":"../node_modules/aurelia-history/dist/amd/aurelia-history","aurelia-loader":"../node_modules/aurelia-loader/dist/amd/aurelia-loader","aurelia-history-browser":"../node_modules/aurelia-history-browser/dist/amd/aurelia-history-browser","aurelia-loader-default":"../node_modules/aurelia-loader-default/dist/amd/aurelia-loader-default","aurelia-logging":"../node_modules/aurelia-logging/dist/amd/aurelia-logging","aurelia-logging-console":"../node_modules/aurelia-logging-console/dist/amd/aurelia-logging-console","aurelia-metadata":"../node_modules/aurelia-metadata/dist/amd/aurelia-metadata","aurelia-pal":"../node_modules/aurelia-pal/dist/amd/aurelia-pal","aurelia-pal-browser":"../node_modules/aurelia-pal-browser/dist/amd/aurelia-pal-browser","aurelia-path":"../node_modules/aurelia-path/dist/amd/aurelia-path","aurelia-polyfills":"../node_modules/aurelia-polyfills/dist/amd/aurelia-polyfills","aurelia-route-recognizer":"../node_modules/aurelia-route-recognizer/dist/amd/aurelia-route-recognizer","aurelia-task-queue":"../node_modules/aurelia-task-queue/dist/amd/aurelia-task-queue","aurelia-router":"../node_modules/aurelia-router/dist/amd/aurelia-router","aurelia-templating":"../node_modules/aurelia-templating/dist/amd/aurelia-templating","aurelia-templating-binding":"../node_modules/aurelia-templating-binding/dist/amd/aurelia-templating-binding","jquery":"../node_modules/jquery/dist/jquery","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"bootstrap","location":"../node_modules/bootstrap/dist","main":"js/bootstrap.min"},{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"}],"stubModules":["text"],"shim":{"bootstrap":{"deps":["jquery"],"exports":"$"}},"bundles":{"app-bundle":["app","design","environment","home","main","no-search","search","store","search-list","stats","resources/index","styles","design-item"]}});
 define('text',{});
 define('aurelia-binding',['exports', 'aurelia-logging', 'aurelia-pal', 'aurelia-task-queue', 'aurelia-metadata'], function (exports, _aureliaLogging, _aureliaPal, _aureliaTaskQueue, _aureliaMetadata) {
   'use strict';
@@ -9143,151 +9143,6 @@ define('aurelia-binding',['exports', 'aurelia-logging', 'aurelia-pal', 'aurelia-
     return deco(targetOrConfig, key, descriptor);
   }
 });
-define('aurelia-bootstrapper',['exports', 'aurelia-pal', 'aurelia-pal-browser', 'aurelia-polyfills'], function (exports, _aureliaPal, _aureliaPalBrowser) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.bootstrap = bootstrap;
-
-
-  var bootstrapQueue = [];
-  var sharedLoader = null;
-  var Aurelia = null;
-
-  function onBootstrap(callback) {
-    return new Promise(function (resolve, reject) {
-      if (sharedLoader) {
-        resolve(callback(sharedLoader));
-      } else {
-        bootstrapQueue.push(function () {
-          try {
-            resolve(callback(sharedLoader));
-          } catch (e) {
-            reject(e);
-          }
-        });
-      }
-    });
-  }
-
-  function ready(global) {
-    return new Promise(function (resolve, reject) {
-      if (global.document.readyState === 'complete') {
-        resolve(global.document);
-      } else {
-        global.document.addEventListener('DOMContentLoaded', completed);
-        global.addEventListener('load', completed);
-      }
-
-      function completed() {
-        global.document.removeEventListener('DOMContentLoaded', completed);
-        global.removeEventListener('load', completed);
-        resolve(global.document);
-      }
-    });
-  }
-
-  function createLoader() {
-    if (_aureliaPal.PLATFORM.Loader) {
-      return Promise.resolve(new _aureliaPal.PLATFORM.Loader());
-    }
-
-    if (window.System && typeof window.System.import === 'function') {
-      return System.normalize('aurelia-bootstrapper').then(function (bootstrapperName) {
-        return System.normalize('aurelia-loader-default', bootstrapperName);
-      }).then(function (loaderName) {
-        return System.import(loaderName).then(function (m) {
-          return new m.DefaultLoader();
-        });
-      });
-    }
-
-    if (typeof window.require === 'function') {
-      return new Promise(function (resolve, reject) {
-        return require(['aurelia-loader-default'], function (m) {
-          return resolve(new m.DefaultLoader());
-        }, reject);
-      });
-    }
-
-    return Promise.reject('No PLATFORM.Loader is defined and there is neither a System API (ES6) or a Require API (AMD) globally available to load your app.');
-  }
-
-  function preparePlatform(loader) {
-    return loader.normalize('aurelia-bootstrapper').then(function (bootstrapperName) {
-      return loader.normalize('aurelia-framework', bootstrapperName).then(function (frameworkName) {
-        loader.map('aurelia-framework', frameworkName);
-
-        return Promise.all([loader.normalize('aurelia-dependency-injection', frameworkName).then(function (diName) {
-          return loader.map('aurelia-dependency-injection', diName);
-        }), loader.normalize('aurelia-router', bootstrapperName).then(function (routerName) {
-          return loader.map('aurelia-router', routerName);
-        }), loader.normalize('aurelia-logging-console', bootstrapperName).then(function (loggingConsoleName) {
-          return loader.map('aurelia-logging-console', loggingConsoleName);
-        })]).then(function () {
-          return loader.loadModule(frameworkName).then(function (m) {
-            return Aurelia = m.Aurelia;
-          });
-        });
-      });
-    });
-  }
-
-  function handleApp(loader, appHost) {
-    var moduleId = appHost.getAttribute('aurelia-app') || appHost.getAttribute('data-aurelia-app');
-    return config(loader, appHost, moduleId);
-  }
-
-  function config(loader, appHost, configModuleId) {
-    var aurelia = new Aurelia(loader);
-    aurelia.host = appHost;
-    aurelia.configModuleId = configModuleId || null;
-
-    if (configModuleId) {
-      return loader.loadModule(configModuleId).then(function (customConfig) {
-        return customConfig.configure(aurelia);
-      });
-    }
-
-    aurelia.use.standardConfiguration().developmentLogging();
-
-    return aurelia.start().then(function () {
-      return aurelia.setRoot();
-    });
-  }
-
-  function run() {
-    return ready(window).then(function (doc) {
-      (0, _aureliaPalBrowser.initialize)();
-
-      var appHost = doc.querySelectorAll('[aurelia-app],[data-aurelia-app]');
-      return createLoader().then(function (loader) {
-        return preparePlatform(loader).then(function () {
-          for (var i = 0, ii = appHost.length; i < ii; ++i) {
-            handleApp(loader, appHost[i]).catch(console.error.bind(console));
-          }
-
-          sharedLoader = loader;
-          for (var _i = 0, _ii = bootstrapQueue.length; _i < _ii; ++_i) {
-            bootstrapQueue[_i]();
-          }
-          bootstrapQueue = null;
-        });
-      });
-    });
-  }
-
-  function bootstrap(configure) {
-    return onBootstrap(function (loader) {
-      var aurelia = new Aurelia(loader);
-      return configure(aurelia);
-    });
-  }
-
-  run();
-});
 define('aurelia-dependency-injection',['exports', 'aurelia-metadata', 'aurelia-pal'], function (exports, _aureliaMetadata, _aureliaPal) {
   'use strict';
 
@@ -10013,6 +9868,151 @@ define('aurelia-dependency-injection',['exports', 'aurelia-metadata', 'aurelia-p
       }
     };
   }
+});
+define('aurelia-bootstrapper',['exports', 'aurelia-pal', 'aurelia-pal-browser', 'aurelia-polyfills'], function (exports, _aureliaPal, _aureliaPalBrowser) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.bootstrap = bootstrap;
+
+
+  var bootstrapQueue = [];
+  var sharedLoader = null;
+  var Aurelia = null;
+
+  function onBootstrap(callback) {
+    return new Promise(function (resolve, reject) {
+      if (sharedLoader) {
+        resolve(callback(sharedLoader));
+      } else {
+        bootstrapQueue.push(function () {
+          try {
+            resolve(callback(sharedLoader));
+          } catch (e) {
+            reject(e);
+          }
+        });
+      }
+    });
+  }
+
+  function ready(global) {
+    return new Promise(function (resolve, reject) {
+      if (global.document.readyState === 'complete') {
+        resolve(global.document);
+      } else {
+        global.document.addEventListener('DOMContentLoaded', completed);
+        global.addEventListener('load', completed);
+      }
+
+      function completed() {
+        global.document.removeEventListener('DOMContentLoaded', completed);
+        global.removeEventListener('load', completed);
+        resolve(global.document);
+      }
+    });
+  }
+
+  function createLoader() {
+    if (_aureliaPal.PLATFORM.Loader) {
+      return Promise.resolve(new _aureliaPal.PLATFORM.Loader());
+    }
+
+    if (window.System && typeof window.System.import === 'function') {
+      return System.normalize('aurelia-bootstrapper').then(function (bootstrapperName) {
+        return System.normalize('aurelia-loader-default', bootstrapperName);
+      }).then(function (loaderName) {
+        return System.import(loaderName).then(function (m) {
+          return new m.DefaultLoader();
+        });
+      });
+    }
+
+    if (typeof window.require === 'function') {
+      return new Promise(function (resolve, reject) {
+        return require(['aurelia-loader-default'], function (m) {
+          return resolve(new m.DefaultLoader());
+        }, reject);
+      });
+    }
+
+    return Promise.reject('No PLATFORM.Loader is defined and there is neither a System API (ES6) or a Require API (AMD) globally available to load your app.');
+  }
+
+  function preparePlatform(loader) {
+    return loader.normalize('aurelia-bootstrapper').then(function (bootstrapperName) {
+      return loader.normalize('aurelia-framework', bootstrapperName).then(function (frameworkName) {
+        loader.map('aurelia-framework', frameworkName);
+
+        return Promise.all([loader.normalize('aurelia-dependency-injection', frameworkName).then(function (diName) {
+          return loader.map('aurelia-dependency-injection', diName);
+        }), loader.normalize('aurelia-router', bootstrapperName).then(function (routerName) {
+          return loader.map('aurelia-router', routerName);
+        }), loader.normalize('aurelia-logging-console', bootstrapperName).then(function (loggingConsoleName) {
+          return loader.map('aurelia-logging-console', loggingConsoleName);
+        })]).then(function () {
+          return loader.loadModule(frameworkName).then(function (m) {
+            return Aurelia = m.Aurelia;
+          });
+        });
+      });
+    });
+  }
+
+  function handleApp(loader, appHost) {
+    var moduleId = appHost.getAttribute('aurelia-app') || appHost.getAttribute('data-aurelia-app');
+    return config(loader, appHost, moduleId);
+  }
+
+  function config(loader, appHost, configModuleId) {
+    var aurelia = new Aurelia(loader);
+    aurelia.host = appHost;
+    aurelia.configModuleId = configModuleId || null;
+
+    if (configModuleId) {
+      return loader.loadModule(configModuleId).then(function (customConfig) {
+        return customConfig.configure(aurelia);
+      });
+    }
+
+    aurelia.use.standardConfiguration().developmentLogging();
+
+    return aurelia.start().then(function () {
+      return aurelia.setRoot();
+    });
+  }
+
+  function run() {
+    return ready(window).then(function (doc) {
+      (0, _aureliaPalBrowser.initialize)();
+
+      var appHost = doc.querySelectorAll('[aurelia-app],[data-aurelia-app]');
+      return createLoader().then(function (loader) {
+        return preparePlatform(loader).then(function () {
+          for (var i = 0, ii = appHost.length; i < ii; ++i) {
+            handleApp(loader, appHost[i]).catch(console.error.bind(console));
+          }
+
+          sharedLoader = loader;
+          for (var _i = 0, _ii = bootstrapQueue.length; _i < _ii; ++_i) {
+            bootstrapQueue[_i]();
+          }
+          bootstrapQueue = null;
+        });
+      });
+    });
+  }
+
+  function bootstrap(configure) {
+    return onBootstrap(function (loader) {
+      var aurelia = new Aurelia(loader);
+      return configure(aurelia);
+    });
+  }
+
+  run();
 });
 define('aurelia-event-aggregator',['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
   'use strict';
@@ -11884,6 +11884,64 @@ define('aurelia-logging',['exports'], function (exports) {
     return Logger;
   }();
 });
+define('aurelia-logging-console',['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.ConsoleAppender = undefined;
+
+  
+
+  var ConsoleAppender = exports.ConsoleAppender = function () {
+    function ConsoleAppender() {
+      
+    }
+
+    ConsoleAppender.prototype.debug = function debug(logger) {
+      var _console;
+
+      for (var _len = arguments.length, rest = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        rest[_key - 1] = arguments[_key];
+      }
+
+      (_console = console).debug.apply(_console, ['DEBUG [' + logger.id + ']'].concat(rest));
+    };
+
+    ConsoleAppender.prototype.info = function info(logger) {
+      var _console2;
+
+      for (var _len2 = arguments.length, rest = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        rest[_key2 - 1] = arguments[_key2];
+      }
+
+      (_console2 = console).info.apply(_console2, ['INFO [' + logger.id + ']'].concat(rest));
+    };
+
+    ConsoleAppender.prototype.warn = function warn(logger) {
+      var _console3;
+
+      for (var _len3 = arguments.length, rest = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+        rest[_key3 - 1] = arguments[_key3];
+      }
+
+      (_console3 = console).warn.apply(_console3, ['WARN [' + logger.id + ']'].concat(rest));
+    };
+
+    ConsoleAppender.prototype.error = function error(logger) {
+      var _console4;
+
+      for (var _len4 = arguments.length, rest = Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+        rest[_key4 - 1] = arguments[_key4];
+      }
+
+      (_console4 = console).error.apply(_console4, ['ERROR [' + logger.id + ']'].concat(rest));
+    };
+
+    return ConsoleAppender;
+  }();
+});
 define('aurelia-metadata',['exports', 'aurelia-pal'], function (exports, _aureliaPal) {
   'use strict';
 
@@ -12155,64 +12213,6 @@ define('aurelia-metadata',['exports', 'aurelia-pal'], function (exports, _aureli
 
     return result;
   };
-});
-define('aurelia-logging-console',['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.ConsoleAppender = undefined;
-
-  
-
-  var ConsoleAppender = exports.ConsoleAppender = function () {
-    function ConsoleAppender() {
-      
-    }
-
-    ConsoleAppender.prototype.debug = function debug(logger) {
-      var _console;
-
-      for (var _len = arguments.length, rest = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        rest[_key - 1] = arguments[_key];
-      }
-
-      (_console = console).debug.apply(_console, ['DEBUG [' + logger.id + ']'].concat(rest));
-    };
-
-    ConsoleAppender.prototype.info = function info(logger) {
-      var _console2;
-
-      for (var _len2 = arguments.length, rest = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        rest[_key2 - 1] = arguments[_key2];
-      }
-
-      (_console2 = console).info.apply(_console2, ['INFO [' + logger.id + ']'].concat(rest));
-    };
-
-    ConsoleAppender.prototype.warn = function warn(logger) {
-      var _console3;
-
-      for (var _len3 = arguments.length, rest = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-        rest[_key3 - 1] = arguments[_key3];
-      }
-
-      (_console3 = console).warn.apply(_console3, ['WARN [' + logger.id + ']'].concat(rest));
-    };
-
-    ConsoleAppender.prototype.error = function error(logger) {
-      var _console4;
-
-      for (var _len4 = arguments.length, rest = Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
-        rest[_key4 - 1] = arguments[_key4];
-      }
-
-      (_console4 = console).error.apply(_console4, ['ERROR [' + logger.id + ']'].concat(rest));
-    };
-
-    return ConsoleAppender;
-  }();
 });
 define('aurelia-pal',['exports'], function (exports) {
   'use strict';
@@ -12810,6 +12810,218 @@ define('aurelia-pal-browser',['exports', 'aurelia-pal'], function (exports, _aur
         }
       });
     });
+  }
+});
+define('aurelia-path',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.relativeToFile = relativeToFile;
+  exports.join = join;
+  exports.buildQueryString = buildQueryString;
+  exports.parseQueryString = parseQueryString;
+
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  };
+
+  function trimDots(ary) {
+    for (var i = 0; i < ary.length; ++i) {
+      var part = ary[i];
+      if (part === '.') {
+        ary.splice(i, 1);
+        i -= 1;
+      } else if (part === '..') {
+        if (i === 0 || i === 1 && ary[2] === '..' || ary[i - 1] === '..') {
+          continue;
+        } else if (i > 0) {
+          ary.splice(i - 1, 2);
+          i -= 2;
+        }
+      }
+    }
+  }
+
+  function relativeToFile(name, file) {
+    var fileParts = file && file.split('/');
+    var nameParts = name.trim().split('/');
+
+    if (nameParts[0].charAt(0) === '.' && fileParts) {
+      var normalizedBaseParts = fileParts.slice(0, fileParts.length - 1);
+      nameParts.unshift.apply(nameParts, normalizedBaseParts);
+    }
+
+    trimDots(nameParts);
+
+    return nameParts.join('/');
+  }
+
+  function join(path1, path2) {
+    if (!path1) {
+      return path2;
+    }
+
+    if (!path2) {
+      return path1;
+    }
+
+    var schemeMatch = path1.match(/^([^/]*?:)\//);
+    var scheme = schemeMatch && schemeMatch.length > 0 ? schemeMatch[1] : '';
+    path1 = path1.substr(scheme.length);
+
+    var urlPrefix = void 0;
+    if (path1.indexOf('///') === 0 && scheme === 'file:') {
+      urlPrefix = '///';
+    } else if (path1.indexOf('//') === 0) {
+      urlPrefix = '//';
+    } else if (path1.indexOf('/') === 0) {
+      urlPrefix = '/';
+    } else {
+      urlPrefix = '';
+    }
+
+    var trailingSlash = path2.slice(-1) === '/' ? '/' : '';
+
+    var url1 = path1.split('/');
+    var url2 = path2.split('/');
+    var url3 = [];
+
+    for (var i = 0, ii = url1.length; i < ii; ++i) {
+      if (url1[i] === '..') {
+        url3.pop();
+      } else if (url1[i] === '.' || url1[i] === '') {
+        continue;
+      } else {
+        url3.push(url1[i]);
+      }
+    }
+
+    for (var _i = 0, _ii = url2.length; _i < _ii; ++_i) {
+      if (url2[_i] === '..') {
+        url3.pop();
+      } else if (url2[_i] === '.' || url2[_i] === '') {
+        continue;
+      } else {
+        url3.push(url2[_i]);
+      }
+    }
+
+    return scheme + urlPrefix + url3.join('/') + trailingSlash;
+  }
+
+  var encode = encodeURIComponent;
+  var encodeKey = function encodeKey(k) {
+    return encode(k).replace('%24', '$');
+  };
+
+  function buildParam(key, value) {
+    var result = [];
+    if (value === null || value === undefined) {
+      return result;
+    }
+    if (Array.isArray(value)) {
+      for (var i = 0, l = value.length; i < l; i++) {
+        var arrayKey = key + '[' + (_typeof(value[i]) === 'object' && value[i] !== null ? i : '') + ']';
+        result = result.concat(buildParam(arrayKey, value[i]));
+      }
+    } else if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
+      for (var propertyName in value) {
+        result = result.concat(buildParam(key + '[' + propertyName + ']', value[propertyName]));
+      }
+    } else {
+      result.push(encodeKey(key) + '=' + encode(value));
+    }
+    return result;
+  }
+
+  function buildQueryString(params) {
+    var pairs = [];
+    var keys = Object.keys(params || {}).sort();
+    for (var i = 0, len = keys.length; i < len; i++) {
+      var key = keys[i];
+      pairs = pairs.concat(buildParam(key, params[key]));
+    }
+
+    if (pairs.length === 0) {
+      return '';
+    }
+
+    return pairs.join('&');
+  }
+
+  function processScalarParam(existedParam, value, isPrimitive) {
+    if (Array.isArray(existedParam)) {
+      existedParam.push(value);
+      return existedParam;
+    }
+    if (existedParam !== undefined) {
+      return isPrimitive ? value : [existedParam, value];
+    }
+
+    return value;
+  }
+
+  function parseComplexParam(queryParams, keys, value) {
+    var currentParams = queryParams;
+    var keysLastIndex = keys.length - 1;
+    for (var j = 0; j <= keysLastIndex; j++) {
+      var key = keys[j] === '' ? currentParams.length : keys[j];
+      if (j < keysLastIndex) {
+        currentParams = currentParams[key] = currentParams[key] || (isNaN(keys[j + 1]) ? {} : []);
+      } else {
+        currentParams = currentParams[key] = value;
+      }
+    }
+  }
+
+  function parseQueryString(queryString) {
+    var queryParams = {};
+    if (!queryString || typeof queryString !== 'string') {
+      return queryParams;
+    }
+
+    var query = queryString;
+    if (query.charAt(0) === '?') {
+      query = query.substr(1);
+    }
+
+    var pairs = query.replace(/\+/g, ' ').split('&');
+    for (var i = 0; i < pairs.length; i++) {
+      var pair = pairs[i].split('=');
+      var key = decodeURIComponent(pair[0]);
+      var isPrimitive = false;
+      if (!key) {
+        continue;
+      }
+
+      var keys = key.split('][');
+      var keysLastIndex = keys.length - 1;
+
+      if (/\[/.test(keys[0]) && /\]$/.test(keys[keysLastIndex])) {
+        keys[keysLastIndex] = keys[keysLastIndex].replace(/\]$/, '');
+        keys = keys.shift().split('[').concat(keys);
+        keysLastIndex = keys.length - 1;
+      } else {
+        isPrimitive = true;
+        keysLastIndex = 0;
+      }
+
+      if (pair.length >= 2) {
+        var value = pair[1] ? decodeURIComponent(pair[1]) : '';
+        if (keysLastIndex) {
+          parseComplexParam(queryParams, keys, value);
+        } else {
+          queryParams[key] = processScalarParam(queryParams[key], value, isPrimitive);
+        }
+      } else {
+        queryParams[key] = true;
+      }
+    }
+    return queryParams;
   }
 });
 define('aurelia-polyfills',['aurelia-pal'], function (_aureliaPal) {
@@ -13615,218 +13827,6 @@ define('aurelia-polyfills',['aurelia-pal'], function (_aureliaPal) {
     };
   }
 });
-define('aurelia-path',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.relativeToFile = relativeToFile;
-  exports.join = join;
-  exports.buildQueryString = buildQueryString;
-  exports.parseQueryString = parseQueryString;
-
-  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
-  };
-
-  function trimDots(ary) {
-    for (var i = 0; i < ary.length; ++i) {
-      var part = ary[i];
-      if (part === '.') {
-        ary.splice(i, 1);
-        i -= 1;
-      } else if (part === '..') {
-        if (i === 0 || i === 1 && ary[2] === '..' || ary[i - 1] === '..') {
-          continue;
-        } else if (i > 0) {
-          ary.splice(i - 1, 2);
-          i -= 2;
-        }
-      }
-    }
-  }
-
-  function relativeToFile(name, file) {
-    var fileParts = file && file.split('/');
-    var nameParts = name.trim().split('/');
-
-    if (nameParts[0].charAt(0) === '.' && fileParts) {
-      var normalizedBaseParts = fileParts.slice(0, fileParts.length - 1);
-      nameParts.unshift.apply(nameParts, normalizedBaseParts);
-    }
-
-    trimDots(nameParts);
-
-    return nameParts.join('/');
-  }
-
-  function join(path1, path2) {
-    if (!path1) {
-      return path2;
-    }
-
-    if (!path2) {
-      return path1;
-    }
-
-    var schemeMatch = path1.match(/^([^/]*?:)\//);
-    var scheme = schemeMatch && schemeMatch.length > 0 ? schemeMatch[1] : '';
-    path1 = path1.substr(scheme.length);
-
-    var urlPrefix = void 0;
-    if (path1.indexOf('///') === 0 && scheme === 'file:') {
-      urlPrefix = '///';
-    } else if (path1.indexOf('//') === 0) {
-      urlPrefix = '//';
-    } else if (path1.indexOf('/') === 0) {
-      urlPrefix = '/';
-    } else {
-      urlPrefix = '';
-    }
-
-    var trailingSlash = path2.slice(-1) === '/' ? '/' : '';
-
-    var url1 = path1.split('/');
-    var url2 = path2.split('/');
-    var url3 = [];
-
-    for (var i = 0, ii = url1.length; i < ii; ++i) {
-      if (url1[i] === '..') {
-        url3.pop();
-      } else if (url1[i] === '.' || url1[i] === '') {
-        continue;
-      } else {
-        url3.push(url1[i]);
-      }
-    }
-
-    for (var _i = 0, _ii = url2.length; _i < _ii; ++_i) {
-      if (url2[_i] === '..') {
-        url3.pop();
-      } else if (url2[_i] === '.' || url2[_i] === '') {
-        continue;
-      } else {
-        url3.push(url2[_i]);
-      }
-    }
-
-    return scheme + urlPrefix + url3.join('/') + trailingSlash;
-  }
-
-  var encode = encodeURIComponent;
-  var encodeKey = function encodeKey(k) {
-    return encode(k).replace('%24', '$');
-  };
-
-  function buildParam(key, value) {
-    var result = [];
-    if (value === null || value === undefined) {
-      return result;
-    }
-    if (Array.isArray(value)) {
-      for (var i = 0, l = value.length; i < l; i++) {
-        var arrayKey = key + '[' + (_typeof(value[i]) === 'object' && value[i] !== null ? i : '') + ']';
-        result = result.concat(buildParam(arrayKey, value[i]));
-      }
-    } else if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
-      for (var propertyName in value) {
-        result = result.concat(buildParam(key + '[' + propertyName + ']', value[propertyName]));
-      }
-    } else {
-      result.push(encodeKey(key) + '=' + encode(value));
-    }
-    return result;
-  }
-
-  function buildQueryString(params) {
-    var pairs = [];
-    var keys = Object.keys(params || {}).sort();
-    for (var i = 0, len = keys.length; i < len; i++) {
-      var key = keys[i];
-      pairs = pairs.concat(buildParam(key, params[key]));
-    }
-
-    if (pairs.length === 0) {
-      return '';
-    }
-
-    return pairs.join('&');
-  }
-
-  function processScalarParam(existedParam, value, isPrimitive) {
-    if (Array.isArray(existedParam)) {
-      existedParam.push(value);
-      return existedParam;
-    }
-    if (existedParam !== undefined) {
-      return isPrimitive ? value : [existedParam, value];
-    }
-
-    return value;
-  }
-
-  function parseComplexParam(queryParams, keys, value) {
-    var currentParams = queryParams;
-    var keysLastIndex = keys.length - 1;
-    for (var j = 0; j <= keysLastIndex; j++) {
-      var key = keys[j] === '' ? currentParams.length : keys[j];
-      if (j < keysLastIndex) {
-        currentParams = currentParams[key] = currentParams[key] || (isNaN(keys[j + 1]) ? {} : []);
-      } else {
-        currentParams = currentParams[key] = value;
-      }
-    }
-  }
-
-  function parseQueryString(queryString) {
-    var queryParams = {};
-    if (!queryString || typeof queryString !== 'string') {
-      return queryParams;
-    }
-
-    var query = queryString;
-    if (query.charAt(0) === '?') {
-      query = query.substr(1);
-    }
-
-    var pairs = query.replace(/\+/g, ' ').split('&');
-    for (var i = 0; i < pairs.length; i++) {
-      var pair = pairs[i].split('=');
-      var key = decodeURIComponent(pair[0]);
-      var isPrimitive = false;
-      if (!key) {
-        continue;
-      }
-
-      var keys = key.split('][');
-      var keysLastIndex = keys.length - 1;
-
-      if (/\[/.test(keys[0]) && /\]$/.test(keys[keysLastIndex])) {
-        keys[keysLastIndex] = keys[keysLastIndex].replace(/\]$/, '');
-        keys = keys.shift().split('[').concat(keys);
-        keysLastIndex = keys.length - 1;
-      } else {
-        isPrimitive = true;
-        keysLastIndex = 0;
-      }
-
-      if (pair.length >= 2) {
-        var value = pair[1] ? decodeURIComponent(pair[1]) : '';
-        if (keysLastIndex) {
-          parseComplexParam(queryParams, keys, value);
-        } else {
-          queryParams[key] = processScalarParam(queryParams[key], value, isPrimitive);
-        }
-      } else {
-        queryParams[key] = true;
-      }
-    }
-    return queryParams;
-  }
-});
 define('aurelia-route-recognizer',['exports', 'aurelia-path'], function (exports, _aureliaPath) {
   'use strict';
 
@@ -14301,6 +14301,146 @@ define('aurelia-route-recognizer',['exports', 'aurelia-path'], function (exports
 
     return state;
   }
+});
+define('aurelia-task-queue',['exports', 'aurelia-pal'], function (exports, _aureliaPal) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.TaskQueue = undefined;
+
+  
+
+  var hasSetImmediate = typeof setImmediate === 'function';
+
+  function makeRequestFlushFromMutationObserver(flush) {
+    var toggle = 1;
+    var observer = _aureliaPal.DOM.createMutationObserver(flush);
+    var node = _aureliaPal.DOM.createTextNode('');
+    observer.observe(node, { characterData: true });
+    return function requestFlush() {
+      toggle = -toggle;
+      node.data = toggle;
+    };
+  }
+
+  function makeRequestFlushFromTimer(flush) {
+    return function requestFlush() {
+      var timeoutHandle = setTimeout(handleFlushTimer, 0);
+
+      var intervalHandle = setInterval(handleFlushTimer, 50);
+      function handleFlushTimer() {
+        clearTimeout(timeoutHandle);
+        clearInterval(intervalHandle);
+        flush();
+      }
+    };
+  }
+
+  function onError(error, task) {
+    if ('onError' in task) {
+      task.onError(error);
+    } else if (hasSetImmediate) {
+      setImmediate(function () {
+        throw error;
+      });
+    } else {
+      setTimeout(function () {
+        throw error;
+      }, 0);
+    }
+  }
+
+  var TaskQueue = exports.TaskQueue = function () {
+    function TaskQueue() {
+      var _this = this;
+
+      
+
+      this.microTaskQueue = [];
+      this.microTaskQueueCapacity = 1024;
+      this.taskQueue = [];
+
+      if (_aureliaPal.FEATURE.mutationObserver) {
+        this.requestFlushMicroTaskQueue = makeRequestFlushFromMutationObserver(function () {
+          return _this.flushMicroTaskQueue();
+        });
+      } else {
+        this.requestFlushMicroTaskQueue = makeRequestFlushFromTimer(function () {
+          return _this.flushMicroTaskQueue();
+        });
+      }
+
+      this.requestFlushTaskQueue = makeRequestFlushFromTimer(function () {
+        return _this.flushTaskQueue();
+      });
+    }
+
+    TaskQueue.prototype.queueMicroTask = function queueMicroTask(task) {
+      if (this.microTaskQueue.length < 1) {
+        this.requestFlushMicroTaskQueue();
+      }
+
+      this.microTaskQueue.push(task);
+    };
+
+    TaskQueue.prototype.queueTask = function queueTask(task) {
+      if (this.taskQueue.length < 1) {
+        this.requestFlushTaskQueue();
+      }
+
+      this.taskQueue.push(task);
+    };
+
+    TaskQueue.prototype.flushTaskQueue = function flushTaskQueue() {
+      var queue = this.taskQueue;
+      var index = 0;
+      var task = void 0;
+
+      this.taskQueue = [];
+
+      try {
+        while (index < queue.length) {
+          task = queue[index];
+          task.call();
+          index++;
+        }
+      } catch (error) {
+        onError(error, task);
+      }
+    };
+
+    TaskQueue.prototype.flushMicroTaskQueue = function flushMicroTaskQueue() {
+      var queue = this.microTaskQueue;
+      var capacity = this.microTaskQueueCapacity;
+      var index = 0;
+      var task = void 0;
+
+      try {
+        while (index < queue.length) {
+          task = queue[index];
+          task.call();
+          index++;
+
+          if (index > capacity) {
+            for (var scan = 0, newLength = queue.length - index; scan < newLength; scan++) {
+              queue[scan] = queue[scan + index];
+            }
+
+            queue.length -= index;
+            index = 0;
+          }
+        }
+      } catch (error) {
+        onError(error, task);
+      }
+
+      queue.length = 0;
+    };
+
+    return TaskQueue;
+  }();
 });
 define('aurelia-router',['exports', 'aurelia-logging', 'aurelia-route-recognizer', 'aurelia-dependency-injection', 'aurelia-history', 'aurelia-event-aggregator'], function (exports, _aureliaLogging, _aureliaRouteRecognizer, _aureliaDependencyInjection, _aureliaHistory, _aureliaEventAggregator) {
   'use strict';
@@ -16133,146 +16273,6 @@ define('aurelia-router',['exports', 'aurelia-logging', 'aurelia-route-recognizer
       logger.error('Router navigation failed, and no previous location could be restored.');
     }
   }
-});
-define('aurelia-task-queue',['exports', 'aurelia-pal'], function (exports, _aureliaPal) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.TaskQueue = undefined;
-
-  
-
-  var hasSetImmediate = typeof setImmediate === 'function';
-
-  function makeRequestFlushFromMutationObserver(flush) {
-    var toggle = 1;
-    var observer = _aureliaPal.DOM.createMutationObserver(flush);
-    var node = _aureliaPal.DOM.createTextNode('');
-    observer.observe(node, { characterData: true });
-    return function requestFlush() {
-      toggle = -toggle;
-      node.data = toggle;
-    };
-  }
-
-  function makeRequestFlushFromTimer(flush) {
-    return function requestFlush() {
-      var timeoutHandle = setTimeout(handleFlushTimer, 0);
-
-      var intervalHandle = setInterval(handleFlushTimer, 50);
-      function handleFlushTimer() {
-        clearTimeout(timeoutHandle);
-        clearInterval(intervalHandle);
-        flush();
-      }
-    };
-  }
-
-  function onError(error, task) {
-    if ('onError' in task) {
-      task.onError(error);
-    } else if (hasSetImmediate) {
-      setImmediate(function () {
-        throw error;
-      });
-    } else {
-      setTimeout(function () {
-        throw error;
-      }, 0);
-    }
-  }
-
-  var TaskQueue = exports.TaskQueue = function () {
-    function TaskQueue() {
-      var _this = this;
-
-      
-
-      this.microTaskQueue = [];
-      this.microTaskQueueCapacity = 1024;
-      this.taskQueue = [];
-
-      if (_aureliaPal.FEATURE.mutationObserver) {
-        this.requestFlushMicroTaskQueue = makeRequestFlushFromMutationObserver(function () {
-          return _this.flushMicroTaskQueue();
-        });
-      } else {
-        this.requestFlushMicroTaskQueue = makeRequestFlushFromTimer(function () {
-          return _this.flushMicroTaskQueue();
-        });
-      }
-
-      this.requestFlushTaskQueue = makeRequestFlushFromTimer(function () {
-        return _this.flushTaskQueue();
-      });
-    }
-
-    TaskQueue.prototype.queueMicroTask = function queueMicroTask(task) {
-      if (this.microTaskQueue.length < 1) {
-        this.requestFlushMicroTaskQueue();
-      }
-
-      this.microTaskQueue.push(task);
-    };
-
-    TaskQueue.prototype.queueTask = function queueTask(task) {
-      if (this.taskQueue.length < 1) {
-        this.requestFlushTaskQueue();
-      }
-
-      this.taskQueue.push(task);
-    };
-
-    TaskQueue.prototype.flushTaskQueue = function flushTaskQueue() {
-      var queue = this.taskQueue;
-      var index = 0;
-      var task = void 0;
-
-      this.taskQueue = [];
-
-      try {
-        while (index < queue.length) {
-          task = queue[index];
-          task.call();
-          index++;
-        }
-      } catch (error) {
-        onError(error, task);
-      }
-    };
-
-    TaskQueue.prototype.flushMicroTaskQueue = function flushMicroTaskQueue() {
-      var queue = this.microTaskQueue;
-      var capacity = this.microTaskQueueCapacity;
-      var index = 0;
-      var task = void 0;
-
-      try {
-        while (index < queue.length) {
-          task = queue[index];
-          task.call();
-          index++;
-
-          if (index > capacity) {
-            for (var scan = 0, newLength = queue.length - index; scan < newLength; scan++) {
-              queue[scan] = queue[scan + index];
-            }
-
-            queue.length -= index;
-            index = 0;
-          }
-        }
-      } catch (error) {
-        onError(error, task);
-      }
-
-      queue.length = 0;
-    };
-
-    return TaskQueue;
-  }();
 });
 define('aurelia-templating',['exports', 'aurelia-logging', 'aurelia-metadata', 'aurelia-pal', 'aurelia-path', 'aurelia-loader', 'aurelia-dependency-injection', 'aurelia-binding', 'aurelia-task-queue'], function (exports, _aureliaLogging, _aureliaMetadata, _aureliaPal, _aureliaPath, _aureliaLoader, _aureliaDependencyInjection, _aureliaBinding, _aureliaTaskQueue) {
   'use strict';
