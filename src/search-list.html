@@ -1,7 +1,7 @@
 <template>
   <require from="./design-item.html"></require>
 
-  <div class="col-md-4">
+  <div class="col-md-4 top10">
     <div class="search-list">
       <form submit.trigger="addSearch()">
         <div class="input-group">
@@ -21,7 +21,7 @@
     <a route-href="route: results" class="btn btn-primary top10">Finish</a>
   </div>
 
-  <div class="design-list col-md-8">
+  <div class="design-list col-md-8 top10">
     <ul class="list-group">
       <li repeat.for="design of currentSearch.designs" class="list-group-item">
         <div class="panel panel-default">

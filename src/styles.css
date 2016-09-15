@@ -1,4 +1,13 @@
-body { padding-top: 70px; }
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 70px;
+  /* Margin bottom by footer height */
+  margin-bottom: 110px;
+}
 
 section {
   margin: 0 20px;
@@ -56,3 +65,16 @@ li.list-group-item.active > a {
 }
 
 .top10 { margin-top:10px; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding: 20px 15px;
+}
