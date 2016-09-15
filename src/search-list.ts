@@ -21,11 +21,23 @@ export class SearchList {
   addSearch() {
     var currentQuery = this.searchQuery;
     if (currentQuery) {
-      this.currentSearch = new Search(currentQuery);
-      this.store.addRow(this.currentSearch);
-
+      const repeatedSearch = this.findSearch(currentQuery);
+      if (repeatedSearch) {
+        this.store.dropRow(repeatedSearch);
+        this.currentSearch = repeatedSearch;
+      } else {
+        this.currentSearch = new Search(currentQuery);
+        this.store.addRow(this.currentSearch);
+      }
       this.searchQuery = '';
-      this.router.navigate('designs/'+currentQuery);
+      this.router.navigate('designs/' + currentQuery);
+    }
+  }
+
+  private findSearch(query) {
+    const found = this.store.find( search => { return search.searchQuery == query });
+    if (found.length != 0) {
+      return found[0];
     }
   }
 }
