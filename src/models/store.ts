@@ -1,4 +1,6 @@
 export class Store {
+  rows = [];
+
   constructor(){
     this.reset();
   }
