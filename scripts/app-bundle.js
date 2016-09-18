@@ -65,7 +65,6 @@ define('models/store',["require", "exports"], function (require, exports) {
     "use strict";
     var Store = (function () {
         function Store() {
-            this.rows = [];
             this.reset();
         }
         Store.prototype.addRow = function (row) {
@@ -106,8 +105,8 @@ define('models/search',["require", "exports", 'aurelia-fetch-client', './design'
     var Search = (function () {
         function Search(searchQuery) {
             this.designs = [];
-            this.likedDesigns = [];
-            this.dislikedDesigns = [];
+            this.likedDesigns = 0;
+            this.dislikedDesigns = 0;
             this.searchQuery = searchQuery;
             this.fetchSearch();
         }
@@ -198,16 +197,32 @@ define('components/stats',["require", "exports", 'aurelia-framework', '../models
         function Stats(store) {
             this.store = store;
             this.searches = this.store.rows;
+            this.countLikedSearches();
             this.totalVotes = this.searches.map(this.voted).reduce(this.addUp, 0);
         }
         Stats.prototype.deactivate = function () {
             this.store.reset();
         };
         Stats.prototype.voted = function (search) {
-            return (search.likedDesigns.length + search.dislikedDesigns.length);
+            return (search.likedDesigns + search.dislikedDesigns);
         };
         Stats.prototype.addUp = function (previousValue, currentValue) {
             return previousValue + currentValue;
+        };
+        Stats.prototype.countLikedSearches = function () {
+            for (var _i = 0, _a = this.searches; _i < _a.length; _i++) {
+                var search = _a[_i];
+                for (var _b = 0, _c = search.designs; _b < _c.length; _b++) {
+                    var design = _c[_b];
+                    switch (design.liked) {
+                        case true:
+                            search.likedDesigns++;
+                            break;
+                        case false:
+                            search.dislikedDesigns++;
+                    }
+                }
+            }
         };
         Stats = __decorate([
             aurelia_framework_1.inject(store_1.Store), 
@@ -228,6 +243,6 @@ define('resources/index',["require", "exports"], function (require, exports) {
 define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"bootstrap/css/bootstrap.css\"></require>\n  <require from=\"./styles/styles.css\"></require>\n\n  <nav class=\"navbar navbar-default navbar-fixed-top\" role=\"navigation\">\n    <div class=\"container\">\n      <div class=\"navbar-header\">\n        <a class=\"navbar-brand\" href=\"#\">\n          <i class=\"fa fa-user\"></i>\n          <span>LikeDesign</span>\n        </a>\n      </div>\n    </div>\n  </nav>\n\n  <div class=\"container\">\n    <div class=\"row\">\n      <router-view></router-view>\n    </div>\n  </div>\n\n  <footer class=\"footer\">\n    <div class=\"container\">\n      <p class=\"text-muted\">\n        An application at <a href=\"http://spreadshirt.com/\">Spreadshirt</a><br/>\n        Made with <a href=\"http://aurelia.io\">Aurelia</a> by <a href=\"http://miguelsanmiguel.com\">miguelsanmiguel</a><br/>\n        (c) 2106\n      </p>\n    </div>\n  </footer>\n</template>\n"; });
 define('text!styles/styles.css', ['module'], function(module) { module.exports = "html {\n  position: relative;\n  min-height: 100%;\n}\n\nbody {\n  padding-top: 70px;\n  /* Margin bottom by footer height */\n  margin-bottom: 110px;\n}\n\nsection {\n  margin: 0 20px;\n}\n\na:focus {\n  outline: none;\n}\n\n.navbar-nav li.loader {\n    margin: 12px 24px 0 6px;\n}\n\n.no-search {\n  margin: 20px;\n}\n\n.search-list {\n  overflow-y: auto;\n  border: 1px solid #ddd;\n  padding: 10px;\n}\n\n.panel {\n  margin: 20px;\n}\n\n.button-bar {\n  right: 0;\n  left: 0;\n  bottom: 0;\n  border-top: 1px solid #ddd;\n  background: white;\n}\n\n.button-bar > button {\n  float: right;\n  margin: 20px;\n}\n\nul.list-group {\n  margin-bottom: 0px;\n}\n\nli.list-group-item {\n  list-style: none;\n}\n\nli.list-group-item > a {\n  text-decoration: none;\n}\n\nli.list-group-item.active > a {\n  color: white;\n}\n\n.top10 { margin-top:10px; }\n\n.footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  /* Set the fixed height of the footer here */\n  height: 100px;\n  background-color: #f5f5f5;\n}\n\n.footer > .container {\n  padding: 20px 15px;\n}\n"; });
 define('text!components/home.html', ['module'], function(module) { module.exports = "<template>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-3\"></div>\n      <div class=\"col-md-6\">\n        <div class=\"panel panel-default\">\n          <div class=\"panel-heading\">\n            <h3 class=\"panel-title\">Welcome</h3>\n          </div>\n          <div class=\"panel-body\" innerHTML.bind=\"message\"></div>\n        </div>\n        <div class=\"text-center\">\n          <a route-href=\"route: designs\" class=\"btn btn-primary\">Start</a>\n        </div>\n      </div>\n      <div class=\"col-md-3\"></div>\n    </div>\n  </div>\n</template>\n"; });
-define('text!components/search-list.html', ['module'], function(module) { module.exports = "<template>\n  <div class=\"col-md-4 top10\">\n    <div class=\"search-list\">\n      <form submit.trigger=\"addSearch()\">\n        <div class=\"input-group\">\n          <input type=\"text\" value.bind=\"searchQuery\" placeholder=\"Enter a keyword\" class=\"form-control\" />\n          <span class=\"input-group-btn\">\n            <button type=\"submit\" class=\"btn btn-default\">Search</button>\n          </span>\n        </div>\n      </form>\n      <ul class=\"list-group top10\">\n        <li repeat.for=\"search of searches\" class=\"list-group-item\">\n          <span class=\"badge\">${search.designs.length}</span>\n          ${search.searchQuery}\n        </li>\n      </ul>\n    </div>\n    <a route-href=\"route: results\" class=\"btn btn-primary top10\">Finish</a>\n  </div>\n\n  <div class=\"design-list col-md-8 top10\">\n    <ul class=\"list-group\">\n      <li repeat.for=\"design of currentSearch.designs\" class=\"list-group-item\">\n        <div class=\"panel panel-default\">\n          <div class=\"panel-heading\">${design.name}</div>\n            <div class=\"panel-body text-center\">\n              <img src.bind=\"design.href\" class=\"img-thumbnail img-responsive\" />\n            </div>\n            <div class=\"panel-footer text-center\">\n              <label>DK/NA<input type=\"radio\" name=\"liked\" model.bind=\"null\" checked.bind=\"design.liked\" /></label>\n              <label>Like<input type=\"radio\" name=\"liked\" model.bind=\"true\" checked.bind=\"design.liked\" /></label>\n              <label>Dislike<input type=\"radio\" name=\"liked\" model.bind=\"false\" checked.bind=\"design.liked\" /></label>\n            </div>\n          </div>\n        </div>\n      </li>\n    </ul>\n  </div>\n</template>\n"; });
-define('text!components/stats.html', ['module'], function(module) { module.exports = "<template>\n  <div class=\"col-md-3\"></div>\n  <div class=\"col-md-6\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">Thank you!</div>\n      <div class=\"panel-body\">\n        <p>Total of voted designs: ${totalVotes}</p>\n      </div>\n\n      <table class=\"table table-striped top10\">\n        <tr>\n          <td></td>\n          <th>Liked</th>\n          <th>Disliked</th>\n        </tr>\n        <tr repeat.for=\"search of searches\">\n          <th>${search.searchQuery}</th>\n          <td>${search.likedDesigns.length}</td>\n          <td>${search.dislikedDesigns.length}</td>\n        </li>\n        </tr>\n      </table>\n    </div>\n\n    <div class=\"text-center\">\n      <a route-href=\"route: home\" class=\"btn btn-primary\">Start over</a>\n    </div>\n  </div>\n  <div class=\"col-md-3\"></div>\n</template>\n"; });
+define('text!components/search-list.html', ['module'], function(module) { module.exports = "<template>\n  <div class=\"col-md-4 top10\">\n    <div class=\"search-list\">\n      <form submit.trigger=\"addSearch()\">\n        <div class=\"input-group\">\n          <input type=\"text\" value.bind=\"searchQuery\" placeholder=\"Enter a keyword\" class=\"form-control\" />\n          <span class=\"input-group-btn\">\n            <button type=\"submit\" class=\"btn btn-default\">Search</button>\n          </span>\n        </div>\n      </form>\n      <ul class=\"list-group top10\">\n        <li repeat.for=\"search of searches\" class=\"list-group-item\">\n          <span class=\"badge\">${search.designs.length}</span>\n          ${search.searchQuery}\n        </li>\n      </ul>\n    </div>\n    <a route-href=\"route: results\" class=\"btn btn-primary top10\">Finish</a>\n  </div>\n\n  <div class=\"design-list col-md-8 top10\">\n    <ul class=\"list-group\">\n      <li repeat.for=\"design of currentSearch.designs\" class=\"list-group-item\">\n        <div class=\"panel panel-default\">\n          <div class=\"panel-heading\">${design.name}</div>\n            <div class=\"panel-body text-center\">\n              <img src.bind=\"design.href\" class=\"img-thumbnail img-responsive\" />\n            </div>\n            <div class=\"panel-footer text-center\">\n              <div class=\"btn-group\">\n                <label class=\"btn btn-success\">\n                  <input type=\"radio\" name.bind=\"design.id\" model.bind=\"true\" checked.bind=\"design.liked\" autocomplete=\"off\" /> Like\n                </label>\n                <label class=\"btn btn-danger\">\n                  <input type=\"radio\" name.bind=\"design.id\" model.bind=\"false\" checked.bind=\"design.liked\" autocomplete=\"off\" /> Dislike\n                </label>\n              </div>\n            </div>\n          </div>\n        </div>\n      </li>\n    </ul>\n  </div>\n</template>\n"; });
+define('text!components/stats.html', ['module'], function(module) { module.exports = "<template>\n  <div class=\"col-md-3\"></div>\n  <div class=\"col-md-6\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">Thank you!</div>\n      <div class=\"panel-body\">\n        <p>Total of voted designs: ${totalVotes}</p>\n      </div>\n\n      <table class=\"table table-striped top10\">\n        <tr>\n          <td></td>\n          <th>Liked</th>\n          <th>Disliked</th>\n        </tr>\n        <tr repeat.for=\"search of searches\">\n          <th>${search.searchQuery}</th>\n          <td>${search.likedDesigns}</td>\n          <td>${search.dislikedDesigns}</td>\n        </li>\n        </tr>\n      </table>\n    </div>\n\n    <div class=\"text-center\">\n      <a route-href=\"route: home\" class=\"btn btn-primary\">Start over</a>\n    </div>\n  </div>\n  <div class=\"col-md-3\"></div>\n</template>\n"; });
 //# sourceMappingURL=app-bundle.js.map

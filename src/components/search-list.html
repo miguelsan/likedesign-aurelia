@@ -28,9 +28,14 @@
               <img src.bind="design.href" class="img-thumbnail img-responsive" />
             </div>
             <div class="panel-footer text-center">
-              <label>DK/NA<input type="radio" name.bind="design.id" model.bind="null" checked.bind="design.liked" /></label>
-              <label>Like<input type="radio" name.bind="design.id" model.bind="true" checked.bind="design.liked" /></label>
-              <label>Dislike<input type="radio" name.bind="design.id" model.bind="false" checked.bind="design.liked" /></label>
+              <div class="btn-group">
+                <label class="btn btn-success">
+                  <input type="radio" name.bind="design.id" model.bind="true" checked.bind="design.liked" autocomplete="off" /> Like
+                </label>
+                <label class="btn btn-danger">
+                  <input type="radio" name.bind="design.id" model.bind="false" checked.bind="design.liked" autocomplete="off" /> Dislike
+                </label>
+              </div>
             </div>
           </div>
         </div>

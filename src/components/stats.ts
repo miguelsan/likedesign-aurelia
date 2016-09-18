@@ -34,7 +34,6 @@ export class Stats {
             break;
           case false:
             search.dislikedDesigns++;
-          // third case "undefined" does nothing
         }
       }
     }
