@@ -28,8 +28,9 @@
               <img src.bind="design.href" class="img-thumbnail img-responsive" />
             </div>
             <div class="panel-footer text-center">
-              <label>Like it <input type="checkbox" model.bind="design" checked.bind="currentSearch.likedDesigns" /></label>
-              <label>Dislike it <input type="checkbox" model.bind="design" checked.bind="currentSearch.dislikedDesigns" /></label>
+              <label>DK/NA<input type="radio" name.bind="design.id" model.bind="null" checked.bind="design.liked" /></label>
+              <label>Like<input type="radio" name.bind="design.id" model.bind="true" checked.bind="design.liked" /></label>
+              <label>Dislike<input type="radio" name.bind="design.id" model.bind="false" checked.bind="design.liked" /></label>
             </div>
           </div>
         </div>
